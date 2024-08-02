@@ -1,16 +1,15 @@
 //Time complexity - O(n) , Space complexity - O(1)
 
-
  int[] TwoSum(int[] nums, int target)
  {
      var sets = new Dictionary<int, int>();
 
-     for (int i = 0; i < nums.Length; i++)
+     for (int idx = 0; idx < nums.Length; idx++)
      {
-         if (sets.ContainsKey(nums[i]))
-             return new int[] { sets[nums[i]], i };
+         if (sets.ContainsKey(nums[idx]))
+             return new int[] { sets[nums[idx]], idx };
          else
-             sets[target - nums[i]] = i;
+             sets[target - nums[idx]] = idx;
      }
 
      return new int[] { };
