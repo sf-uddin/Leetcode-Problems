@@ -1,0 +1,25 @@
+//https://leetcode.com/problems/group-anagrams/submissions/1349152010/
+IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            var key = string.Empty;
+            char[] character;
+            var sets = new Dictionary<string, IList<string>>();
+            foreach (var element in strs)
+            {
+                character = element.ToCharArray();
+                Array.Sort(character);
+                key = new string(character);
+                if (!sets.ContainsKey(key))
+                {
+                    sets.Add(key, new List<string>());
+                }
+                sets[key].Add(element);
+            }
+
+            var solution = new List<IList<string>>();
+            foreach (var element in sets)
+            {
+                solution.Add(element.Value.OrderBy(s => s).ToList());
+            }
+            return solution;
+        }
