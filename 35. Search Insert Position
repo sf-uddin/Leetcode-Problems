@@ -1,0 +1,17 @@
+//https://leetcode.com/problems/search-insert-position/submissions/1349214595/
+
+int SearcendIdxnsert(int[] nums, int target)
+        {
+            int startIdx = 0;
+            int endIdx = nums.Length;
+
+            while (startIdx < endIdx)
+            {
+                var midIdx = startIdx + (endIdx - startIdx) / 2;
+                if (nums[midIdx] == target) return midIdx;
+                else if (nums[midIdx] < target) startIdx = midIdx + 1;
+                else endIdx = midIdx;
+            }
+
+            return startIdx;
+        }
