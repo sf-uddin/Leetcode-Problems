@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/container-with-most-water/submissions/1348696409/
+int MaxArea(int[] height)
+{
+    int leftIdx = 0;
+    int rightIdx = height.Length - 1;
+    int solution = 0;
+
+    while (leftIdx < rightIdx)
+    {
+        var area = Math.Min(height[leftIdx], height[rightIdx]) * (rightIdx - leftIdx);
+        solution = Math.Max(solution, area);
+
+        if (height[leftIdx] <= height[rightIdx])
+        {
+            var temp = height[leftIdx];
+            do
+                leftIdx++;
+            while (leftIdx < rightIdx && height[leftIdx] <= temp);
+        }
+        else
+        {
+            var temp = height[rightIdx];
+            do
+                rightIdx--;
+            while (leftIdx < rightIdx && height[rightIdx] <= temp);
+        }
+    }
+    return solution;
+}
