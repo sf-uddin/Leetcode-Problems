@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/length-of-last-word/submissions/1349217817/
+
+int LengthOfLastWord(string s)
+        {
+            var endIdx = s.Length - 1;
+            while (endIdx >= 0 && s[endIdx] == ' ')
+            {
+                endIdx--;
+            }
+
+            var solution = 0;
+            while (endIdx >= 0 && s[endIdx] != ' ')
+            {
+                solution++;
+                endIdx--;
+            }
+
+            return solution;
+        }
