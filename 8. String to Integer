@@ -1,0 +1,50 @@
+//https://leetcode.com/problems/string-to-integer-atoi/submissions/1348691595/
+  int MyAtoi(string s) 
+    {
+         if (string.IsNullOrWhiteSpace(s)) 
+    { 
+     return 0; 
+    }
+
+ var direction = false;
+ var idx = 0;
+
+ while (s[idx] == ' ' &&  idx < s.Length  ) 
+ {
+     idx++; 
+ }
+
+ if (s[idx] == '-')
+ {
+     direction = true;
+     idx++;
+ }
+ else if (s[idx] == '+')
+ {
+     idx++;
+ }
+
+ var posOverflowHead = int.MaxValue / 10;
+ var posOverflowTail = int.MaxValue % 10;
+
+ var solution = 0;
+ for (; idx < s.Length; idx++)
+ {
+     var digit = s[idx] - '0';
+     if (digit < 0 || digit > 9) 
+     { 
+        break; 
+     }
+
+     if (solution > posOverflowHead ||
+         (solution == posOverflowHead && digit > posOverflowTail))
+     {
+         return direction ? int.MinValue : int.MaxValue;
+     }
+
+     solution = solution * 10 + digit;
+ }
+
+ return direction ? -solution : solution;
+        
+    }
