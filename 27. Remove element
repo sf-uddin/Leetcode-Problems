@@ -1,0 +1,16 @@
+//https://leetcode.com/problems/remove-element/submissions/1349207327/
+
+int RemoveElement(int[] nums, int val)
+        {
+            var endIdx = nums.Length - 1;
+
+            for (int i = 0; i <= endIdx; i++)
+            {
+                if (nums[i] == val)
+                {
+                    nums[i--] = nums[endIdx--];
+                }
+            }
+
+            return endIdx + 1;
+        }
