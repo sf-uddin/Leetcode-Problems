@@ -1,0 +1,34 @@
+//https://leetcode.com/problems/count-and-say/submissions/1349169609/
+ public string CountAndSay(int n)
+ {
+     var sb = new StringBuilder();
+     var solution = "1";
+     char currentChar;
+     int i;
+     int j;
+     int startNumber;
+     
+
+     for (i = 1; i < n; i++)
+     {
+         currentChar = solution[0];
+         startNumber = 0;
+         for (j = 1; j < solution.Length; j++)
+         {
+             if (currentChar != solution[j])
+             {
+                 sb.Append(j - startNumber);
+                 sb.Append(currentChar);
+                 currentChar = solution[j];
+                 startNumber = j;
+             }
+         }
+         sb.Append(j - startNumber);
+         sb.Append(currentChar);
+
+         solution = sb.ToString();
+         sb.Clear();
+     }
+
+     return solution;
+ }
