@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/zigzag-conversion/submissions/1348681306/
+
+string Convert(string s, int numRows)
+ {
+     if (numRows <= 1 || s.Length <= 1) 
+     { return s; 
+     
+     }
+
+     var solution = new char[s.Length];
+     var idx = 0;
+     for (int i = 0; i < numRows; i++)
+     {
+         for (int j = 0; (numRows * 2 - 2) * j + i < s.Length; j++)
+         {
+             var reallIndex = (numRows * 2 - 2) * j + i;
+             solution[idx++] = s[reallIndex];
+
+             if (i == 0 || i == numRows - 1) { continue; }
+
+             reallIndex = reallIndex + (numRows * 2 - 2) - i * 2;
+             if (reallIndex < s.Length)
+             {
+                 solution[idx++] = s[reallIndex];
+             }
+         }
+     }
+
+     return new string(solution);
+ }
