@@ -1,0 +1,11 @@
+//https://leetcode.com/problems/single-number/submissions/1351348845/
+
+int SingleNumber(int[] nums)
+{
+    var solution = 0;
+    foreach (var element in nums)
+    { 
+    solution ^= element;
+    }
+    return solution;
+}
