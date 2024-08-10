@@ -1,43 +1,46 @@
 //https://leetcode.com/problems/add-binary/submissions/1351143029/
-            var lengthOfa = a.Length - 1;
-            var lengthOfb = b.Length - 1;
-            var carry = 0;
-            var sb = new StringBuilder();
-            int aValue;
-            int bValue;
-            int value;
-            while (lengthOfa >= 0 || lengthOfb >= 0)
-            {
+ string AddBinary(string a, string b)
+ {
+     var lengthOfa = a.Length - 1;
+     var lengthOfb = b.Length - 1;
+     var carry = 0;
+     var sb = new StringBuilder();
+     int aValue;
+     int bValue;
+     int value;
+     while (lengthOfa >= 0 || lengthOfb >= 0)
+     {
 
-                if (lengthOfa >= 0)
-                {
-                    aValue = a[lengthOfa] - '0';
-                }
-                else
-                {
-                    aValue = 0;
-                }
+         if (lengthOfa >= 0)
+         {
+             aValue = a[lengthOfa] - '0';
+         }
+         else
+         {
+             aValue = 0;
+         }
 
-                if (lengthOfb >= 0)
-                {
-                    bValue = b[lengthOfb] - '0';
-                }
-                else
-                {
-                    bValue = 0;
-                }
-                value = aValue + bValue + carry;
-                sb.Insert(0, value & 1);
+         if (lengthOfb >= 0)
+         {
+             bValue = b[lengthOfb] - '0';
+         }
+         else
+         {
+             bValue = 0;
+         }
+         value = aValue + bValue + carry;
+         sb.Insert(0, value & 1);
 
-                carry = value >> 1;
+         carry = value >> 1;
 
-                lengthOfa--;
-                lengthOfb--;
-            }
+         lengthOfa--;
+         lengthOfb--;
+     }
 
-            if (carry >= 1)
-            {
-                sb.Insert(0, carry);
-            }
+     if (carry >= 1)
+     {
+         sb.Insert(0, carry);
+     }
 
-            return sb.ToString();
+     return sb.ToString();
+ }
