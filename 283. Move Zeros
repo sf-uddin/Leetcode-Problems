@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/move-zeroes/submissions/1351353612/
+
+void MoveZeroes(int[] nums)
+        {
+            if (nums == null || nums.Length <= 1)
+            { 
+                return;
+            }
+               
+            int current = 0;
+            for (int idx = 0; idx < nums.Length; idx++)
+            {
+                if (nums[idx] != 0)
+                { 
+                nums[current++] = nums[idx];
+                }
+            }
+            for (; current < nums.Length; current++)
+            {
+                nums[current] = 0;
+            }
+        }
