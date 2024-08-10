@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/climbing-stairs/submissions/1351336920/
+int ClimbStairs(int n)
+        {
+            int a1 = 2;
+            int a2 = 3;
+            int  temp;
+            if (n < 4) 
+            { 
+                return n; 
+            }
+            for (int idx = 4; idx <= n; idx++)
+            {
+                temp = a1 + a2;
+                a1 = a2;
+                a2 = temp;
+            }
+
+            return a2;
+        }
