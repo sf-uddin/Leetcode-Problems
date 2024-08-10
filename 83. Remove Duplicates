@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/1351340197/
+ListNode DeleteDuplicates(ListNode head)
+        {
+            if (head == null) 
+            { 
+                return null; 
+            }
+
+            var previous = head;
+            while (previous.next != null)
+            {
+                if (previous.val == previous.next.val)
+                { 
+                previous.next = previous.next.next;
+                }
+                else
+                    previous = previous.next;
+            }
+
+            return head;
+        }
