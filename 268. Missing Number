@@ -1,0 +1,11 @@
+//https://leetcode.com/problems/missing-number/submissions/1351351285/
+
+int MissingNumber(int[] nums)
+{
+    int solution = 0;
+    for (int idx = 0; idx < nums.Length; ++idx)
+    {
+        solution += (idx + 1) - nums[idx];
+    }
+    return solution;
+}
