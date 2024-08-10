@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/sqrtx/submissions/1351146638/
+
+ int MySqrt(int x) 
+    {
+        double last = 0.0;
+double solution = 1.0;
+if (x < 1) 
+{ 
+    return x; 
+}
+while (last != solution)
+{
+    last = solution;
+    solution = (solution + x / solution) / 2;
+}
+
+return (int)last;
+    }
+}
