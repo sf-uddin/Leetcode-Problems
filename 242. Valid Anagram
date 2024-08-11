@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/valid-anagram/submissions/1351864807/
+
+bool IsAnagram(string s, string t)
+        {
+            if (s.Length != t.Length)
+            {
+                return false;
+            }
+
+            var preString = new int[26];
+            foreach (var ch in s)
+            {
+                preString[ch - 'a']++;
+            }
+            var postString = new int[26];
+            foreach (var ch in t)
+            {
+                postString[ch - 'a']++;
+            }
+            return preString.SequenceEqual(postString);
+        }
