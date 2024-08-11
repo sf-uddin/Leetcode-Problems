@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/happy-number/submissions/1351880210/
+
+bool IsHappy(int n)
+        {
+            var sets = new HashSet<int>();
+
+            while (!sets.Contains(n))
+            {
+                sets.Add(n);
+                var updatedValue = 0;
+                while (n > 0)
+                {
+                    var digit = n % 10;
+                    updatedValue += digit * digit;
+                    n /= 10;
+                }
+
+                if (updatedValue == 1) return true;
+                n = updatedValue;
+            }
+
+            return false;
+        }
