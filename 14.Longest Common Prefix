@@ -1,0 +1,37 @@
+//https://leetcode.com/problems/longest-common-prefix/submissions/1352726743/
+
+string LongestCommonPrefix(string[] strs)
+        {
+            if (strs.Length == 0) 
+            { 
+                return string.Empty;
+            }
+            if (strs.Length == 1) 
+            {
+                return strs[0]; 
+            }
+
+            var firstElement = strs[0];
+            var idx = 0;
+            bool isSame = true;
+            
+            for (idx = 0; idx < firstElement.Length; idx++)
+            {
+                for (int i = 1; i < strs.Length; i++)
+                {
+                    if (strs[i].Length <= idx ||
+                        strs[i][idx] != firstElement[idx])
+                    {
+                        isSame = false;
+                        break;
+                    }
+                }
+
+                if (!isSame)
+                {
+                    break;
+                }
+            }
+
+            return firstElement.Substring(0, idx);
+        }
