@@ -1,0 +1,43 @@
+//https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/1352733260/
+
+IList<string> LetterCombinations(string digits)
+        {
+            string[] charOfPhone = new string[] { " ",
+                                                 "",
+                                                 "abc",
+                                                 "def",
+                                                 "ghi",
+                                                 "jkl",
+                                                 "mno",
+                                                 "pqrs",
+                                                 "tuv",
+                                                 "wxyz"
+                                               };
+
+            if (digits.Length == 0)
+            {
+                return new List<string>();
+            }
+
+            var solutions = new List<string>() { "" };
+            foreach (var digit in digits)
+            {
+                var btns = charOfPhone[digit - '0'];
+                { 
+                if (btns.Length == 0) 
+                        continue;
+                }
+                var temp = new List<string>();
+                foreach (var solution in solutions)
+                {
+                    foreach (var ch in btns)
+                    {
+                        temp.Add(solution + ch.ToString());
+                    }
+                }
+                solutions = temp;
+            }
+
+            if (solutions.Count == 1 && solutions[0] == "") solutions.Clear();
+            return solutions;
+        }
