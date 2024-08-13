@@ -1,0 +1,11 @@
+// https://leetcode.com/problems/power-of-two/submissions/1354480705/
+
+bool IsPowerOfTwo(int n)
+        {
+            if (n == 0)
+            { 
+            return false;
+            }
+            long value = n;
+            return (value & -value) == value;
+        }
