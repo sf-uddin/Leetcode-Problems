@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/perfect-squares/submissions/1354493228/
+
+int NumSquares(int n)
+        {
+            var sets = new int[n + 1];
+            sets[0] = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                int j = 1, minimum = int.MaxValue;
+                while (i - j * j >= 0)
+                {
+                    minimum = Math.Min(minimum, sets[i - j * j]);
+                    j++;
+                }
+                sets[i] = minimum + 1;
+            }
+
+            return sets[n];
+        }
