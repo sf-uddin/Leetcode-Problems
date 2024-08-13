@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/add-digits/submissions/1354484832/
+
+int AddDigits(int num)
+        {
+            if (num == 0)
+            { 
+                return 0;
+            }
+            var result = num % 9;
+            if (result == 0)
+            {  
+                return 9; 
+            }
+            else 
+            {
+                return result;
+            }
+          
+        }
