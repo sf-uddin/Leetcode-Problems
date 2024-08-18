@@ -1,0 +1,20 @@
+//https://leetcode.com/problems/swap-nodes-in-pairs/submissions/1360112297/
+
+ListNode SwapPairs(ListNode head)
+        {
+            var dHead = new ListNode(-1);
+            dHead.next = head;
+            ListNode x = dHead, y;
+
+            while (x.next != null && x.next.next != null)
+            {
+                y = x.next;
+                x.next = y.next;
+                y.next = x.next.next;
+                x.next.next = y;
+
+                x = y;
+            }
+
+            return dHead.next;
+        }
