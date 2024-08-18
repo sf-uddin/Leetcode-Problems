@@ -1,0 +1,37 @@
+//https://leetcode.com/problems/reverse-nodes-in-k-group/submissions/1360116885/
+
+ListNode ReverseKGroup(ListNode head, int k)
+        {
+            if (k <= 1) 
+            { 
+                return head; 
+            }
+
+            var dHead = new ListNode(-1);
+            dHead.next = head;
+            ListNode x = dHead, y, z;
+            int i = 0;
+
+            while (x.next != null)
+            {
+                y = x.next;
+                for (i = 0; i < k; i++)
+                {
+                    if (y == null) { return dHead.next; }
+                    y = y.next;
+                }
+
+                y = x.next;
+                for (i = 1; i < k; i++)
+                {
+                    z = y.next;
+                    y.next = z.next;
+                    z.next = x.next;
+                    x.next = z;
+                }
+
+                x = y;
+            }
+
+            return dHead.next;
+        }
