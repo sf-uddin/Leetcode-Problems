@@ -1,0 +1,47 @@
+//https://leetcode.com/problems/basic-calculator/submissions/1361145801/
+
+int Calculate(string s)
+        {
+            int number = 0;
+            var sign = 1;
+            var sets = new Stack<int>();
+            
+
+            var solution = 0;
+            foreach (var ch in s)
+            {
+                if (char.IsDigit(ch))
+                    number = 10 * number + (ch - '0');
+                else if (ch == '+')
+                {
+                    solution += sign * number;
+                    sign = 1;
+                    number = 0;
+                }
+                else if (ch == '-')
+                {
+                    solution += sign * number;
+                    sign = -1;
+                    number = 0;
+                }
+                else if (ch == '(')
+                {
+                    sets.Push(solution);
+                    sets.Push(sign);
+
+                    sign = 1;
+                    number = 0;
+                    solution = 0;
+                }
+                else if (ch == ')')
+                {
+                    solution += sign * number;
+
+                    number = solution;
+                    sign = sets.Pop();
+                    solution = sets.Pop();
+                }
+            }
+
+            return solution + sign * number;
+        }
