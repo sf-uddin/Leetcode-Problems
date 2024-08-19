@@ -1,0 +1,25 @@
+https://leetcode.com/problems/fibonacci-number/submissions/1361156173/
+
+int Fib(int N)
+        {
+            var first = 0;
+            var second = 1;
+            var temp =0;
+            if (N == 0)
+            { 
+            return 0;
+            }
+            if (N == 1)
+            {
+                return 1;
+            }
+
+            for (int i = 2; i < N; i++)
+            {
+                temp = first + second;
+                first = second;
+                second = temp;
+            }
+
+            return first + second;
+        }
